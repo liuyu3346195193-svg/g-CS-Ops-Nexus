@@ -1,8 +1,22 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Helper to safely get the AI client
+// This prevents the app from crashing on load if the API key is missing
+const getAiClient = () => {
+  // @ts-ignore - process.env is replaced at build time
+  const apiKey = process.env.API_KEY;
+  
+  if (!apiKey) {
+    console.warn("Gemini API Key is missing. Please check your environment variables.");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const generateSOPDraft = async (topic: string): Promise<string> => {
+  const ai = getAiClient();
+  if (!ai) return "⚠️ 系统未配置 API Key，无法生成内容。请在 Vercel 环境变量中设置 API_KEY。";
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
@@ -24,11 +38,14 @@ export const generateSOPDraft = async (topic: string): Promise<string> => {
     return response.text || "生成 SOP 失败。";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "内容生成出错。请检查您的 API 配置。";
+    return "内容生成出错。请检查 API 配额或网络连接。";
   }
 };
 
 export const generateSmartResponse = async (query: string, context: string): Promise<string> => {
+  const ai = getAiClient();
+  if (!ai) return "⚠️ 系统未配置 API Key。";
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
@@ -47,6 +64,9 @@ export const generateSmartResponse = async (query: string, context: string): Pro
 };
 
 export const analyzeSentiment = async (feedback: string): Promise<string> => {
+  const ai = getAiClient();
+  if (!ai) return "⚠️ 系统未配置 API Key。";
+
    try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
