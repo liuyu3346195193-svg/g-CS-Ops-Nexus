@@ -40,14 +40,14 @@ export const UserManual: React.FC = () => {
           </div>
           <div>
             <h4 className="font-semibold text-brand-200 mb-2">CCO 助理岗位职责</h4>
-            <p className="text-sm text-slate-300 leading-relaxed opacity-90">
+            <div className="text-sm text-slate-300 leading-relaxed opacity-90">
               该系统专为您设计，以协助首席客户官管理：
               <ul className="list-disc list-inside mt-1 space-y-1">
                 <li><span className="text-white">流程标准化：</span>搭建 SOP 与客服体系。</li>
                 <li><span className="text-white">商户入驻：</span>优化 Onboarding 路径，解决卡点。</li>
                 <li><span className="text-white">跨部门协作：</span>连接产品、技术与销售。</li>
               </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -75,31 +75,35 @@ export const UserManual: React.FC = () => {
       {/* 2. Team Ops */}
       <ManualSection title="2. 团队运营 (Team Ops) - 流程标准化引擎" icon={<Users className="w-5 h-5" />}>
         <p><strong className="text-slate-800">设计意图：</strong> 响应 JD 中“流程管理经验”和“文档输出功底”的要求，解决团队知识传承问题。</p>
-        <ul className="list-disc list-inside space-y-2 ml-1">
-          <li>
-            <strong className="text-brand-600">AI SOP 生成器：</strong> 
-            这是本模块的核心。您只需输入流程名称（如“商户 KYB 异常处理”），内置的 Gemini AI 会自动生成包含目标、步骤、KPI 的结构化 Markdown 文档。这极大地提高了文档输出效率。
-          </li>
-          <li>
-            <strong className="text-brand-600">项目追踪：</strong> 
-            管理跨部门协作任务（如 API 事故复盘、QBR 汇报），确保执行力。
-          </li>
-        </ul>
+        <div className="ml-1">
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              <strong className="text-brand-600">AI SOP 生成器：</strong> 
+              这是本模块的核心。您只需输入流程名称（如“商户 KYB 异常处理”），内置的 Gemini AI 会自动生成包含目标、步骤、KPI 的结构化 Markdown 文档。这极大地提高了文档输出效率。
+            </li>
+            <li>
+              <strong className="text-brand-600">项目追踪：</strong> 
+              管理跨部门协作任务（如 API 事故复盘、QBR 汇报），确保执行力。
+            </li>
+          </ul>
+        </div>
       </ManualSection>
 
       {/* 3. Onboarding */}
       <ManualSection title="3. 入驻管道 (Onboarding) - 客户旅程视图" icon={<Zap className="w-5 h-5" />}>
         <p><strong className="text-slate-800">设计意图：</strong> 落实“梳理并优化商户注册路径”的职责。可视化每一位商户的状态。</p>
-        <ul className="list-disc list-inside space-y-2 ml-1">
-          <li>
-            <strong className="text-brand-600">看板视图：</strong> 
-            将入驻流程分为 注册/KYB -> 集成(沙箱) -> 测试 -> 上线。卡片颜色代表健康度（红色代表急需干预）。
-          </li>
-          <li>
-            <strong className="text-brand-600">主动干预：</strong> 
-            系统会自动识别瓶颈（例如：某商户在 KYB 停留过久），并在底部提示您协调资源解决，体现“学习自驱力”和“解决问题能力”。
-          </li>
-        </ul>
+        <div className="ml-1">
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              <strong className="text-brand-600">看板视图：</strong> 
+              将入驻流程分为 注册/KYB -&gt; 集成(沙箱) -&gt; 测试 -&gt; 上线。卡片颜色代表健康度（红色代表急需干预）。
+            </li>
+            <li>
+              <strong className="text-brand-600">主动干预：</strong> 
+              系统会自动识别瓶颈（例如：某商户在 KYB 停留过久），并在底部提示您协调资源解决，体现“学习自驱力”和“解决问题能力”。
+            </li>
+          </ul>
+        </div>
       </ManualSection>
 
       {/* 4. Knowledge Base */}
@@ -114,13 +118,15 @@ export const UserManual: React.FC = () => {
       {/* 5. Analytics */}
       <ManualSection title="5. 数据洞察 (Analytics) - 决策大脑" icon={<BarChart3 className="w-5 h-5" />}>
         <p><strong className="text-slate-800">设计意图：</strong> 满足“数据分析与流程优化支持”的要求，用数据说话。</p>
-        <ul className="list-disc list-inside space-y-2 ml-1">
-          <li>展示入驻时长趋势图和 CSAT 满意度分布。</li>
-          <li>
-            <strong className="text-brand-600">AI 洞察报告：</strong> 
-            点击“生成月度报告”，AI 会分析非结构化的客户反馈文本，提炼出改进建议（例如：“商户抱怨文档难懂 -> 建议优化 API 文档”）。
-          </li>
-        </ul>
+        <div className="ml-1">
+          <ul className="list-disc list-inside space-y-2">
+            <li>展示入驻时长趋势图和 CSAT 满意度分布。</li>
+            <li>
+              <strong className="text-brand-600">AI 洞察报告：</strong> 
+              点击“生成月度报告”，AI 会分析非结构化的客户反馈文本，提炼出改进建议（例如：“商户抱怨文档难懂 -&gt; 建议优化 API 文档”）。
+            </li>
+          </ul>
+        </div>
       </ManualSection>
 
       {/* Part 3: Workflow Integration */}
